@@ -7,8 +7,7 @@
 <title>JSP_Tomcat_Java Project</title>
 </head>
 <body style="background-color: #ecf0f1;">
-	<div
-		style="width: 600px; height: 60px; margin: 0 auto; font-size : 25px; text-align: center;">
+	<div style="width: 600px; height: 60px; margin: 0 auto; font-size : 25px; text-align: center;">
 		<div id = "blank" style = "height: 60px"></div>
 		사진 및 글 올리기
 		<br>

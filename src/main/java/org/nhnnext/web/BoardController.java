@@ -12,7 +12,7 @@ public class BoardController {
 		return "form";
 	}
 	
-	@RequestMapping(value = "/board", method = RequestMethod.POST)
+	@RequestMapping(value = "", method = RequestMethod.POST)
 	public String create(String title, String imageContent) {
 		System.out.println("title: " + title + " image: " + imageContent );
 		return "redirect:/";
