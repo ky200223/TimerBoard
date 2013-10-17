@@ -72,11 +72,10 @@ public class BoardController {
 	public String modifyThrow(@PathVariable Long id, Model model) {
 		Board changeBoard = boardRepository.findOne(id);
 		model.addAttribute("board", changeBoard);
-		return "redirect:/board/modifySubmit/" + changeBoard.getId();
+		return "modify"; //redirect는 get 방식이다! 
 	}
 
-	//임시방
-	@RequestMapping(value = "/modifySubmit/{id}", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/modifySubmit/{id}", method = RequestMethod.POST)
 	public String modify(@PathVariable Long id, Board board, MultipartFile file) {
 		 Board modifyBoard = boardRepository.findOne(id);
          modifyBoard.setTitle(board.getTitle());

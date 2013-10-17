@@ -17,6 +17,10 @@ body {
 	text-align: center;
 }
 
+#contents {
+	font-size: 17px;
+}
+
 #blank1 {
 	width: 600px;
 	height: 40px;
@@ -40,23 +44,26 @@ body {
 <body>
 	<div id="blank1"></div>
 	<div id="main">
-		사진을 올려보장 <br>
+		사진을 수정해보장 <br>
 		<hr style="width: 400px">
 		<div id="blank2"></div>
+		<div id = "contents">
 		<form action="/board/modifySubmit/${board.id}" method="post"
 			enctype="multipart/form-data">
 			<div id="content">
-				이 사진은 제목이 뭘까? &nbsp;: &nbsp; <input type="text" name="title"
+				이 사진 제목이랑 내용을 뭘로 바꿀까? &nbsp;: &nbsp; <input type="text" name="title"
 					style="width: 100px" /> <br /> <br /> <input type="text"
 					name="contents" style="width: 280px; height: 70px">
 			</div>
 			<div id="blank3"></div>
 			<!-- accept = "image/*" 으로 이미지 파일만 업로드 할 수 있게 한다. -->
-			이미지 파일도 변경을 원하신다면 여기에서 다시 선택해주세요. <input type="file" name="file"
+			이미지 파일도 변경을 원하신다면 여기에서 다시 선택해주세요. <br/><br/><input type="file" name="file"
 				size="50" accept="image/*" /> <input type="submit" value="수정완료" />
-			<input type="reset" value="삭제하기" />
+			<input type="reset" value="리셋하기" />
 		</form>
+		<br/><br/>
 		<a href="/"> 그냥 수정 안할래요 </a>
+		</div>
 	</div>
 </body>
 </html>
