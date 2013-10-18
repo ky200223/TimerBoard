@@ -13,17 +13,17 @@ body {
 	width: 600px;
 	height: 60px;
 	margin: 0 auto;
-	font-size: 25px;
+	font-size: 3.0em;
 	text-align: center;
 }
 
 #contents {
-	font-size: 17px;
+	font-size: 16px;
 }
 
 #blank1 {
 	width: 600px;
-	height: 40px;
+	height: 10px;
 	margin: 0 auto;
 }
 

@@ -76,7 +76,7 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/modifySubmit/{id}", method = RequestMethod.POST)
-	public String modify(@PathVariable Long id, Board board, MultipartFile file) {
+	public String modify(@PathVariable Long id, Board board, MultipartFile file, Model model) {
 		 Board modifyBoard = boardRepository.findOne(id);
          modifyBoard.setTitle(board.getTitle());
          modifyBoard.setContents(board.getContents());
@@ -86,8 +86,9 @@ public class BoardController {
                  modifyBoard.setFileName(file.getOriginalFilename());
          }    
          
-         boardRepository.save(modifyBoard);         
-         return "redirect:/board/" + modifyBoard.getId();
+         boardRepository.save(modifyBoard);  
+         model.addAttribute("board", modifyBoard);
+         return "modifyMessage";
 	}
 	
 	@RequestMapping(value="/delete/{id}", method=RequestMethod.POST)
@@ -95,4 +96,10 @@ public class BoardController {
 		boardRepository.delete(id);
 		return "deleteMessage";
     }
+	
+	@RequestMapping("/picList")
+	public String list(Model model) {
+		model.addAttribute("boards", boardRepository.findAll());
+		return "picList";
+	}
 }

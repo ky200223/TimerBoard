@@ -28,6 +28,7 @@
 		<div id="blank"></div>
 		<br/><br/>
 		<a href="/board/${board.id}"> 수정확인하러가쟈! </a>
+		<br/><br/>
 		<a href="/"> 첫화면으로! </a>
 	</div>
 </body>

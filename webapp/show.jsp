@@ -55,6 +55,7 @@ body {
 		<form action="/board/delete/${board.id}" method="post">
 			<input type="submit" value="삭제" />
 		</form>
+		<a href = "/"> 처음 페이지로 가기 </a>
 	</div>
 </body>
 </html>

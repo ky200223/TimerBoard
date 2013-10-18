@@ -33,10 +33,10 @@
 		사진 및 글 올리기
 		<br/>
 		<br/>
-		<a href = "/board/form" id = "button"> Go! </a>
+		<a href = "/board/form"> Go! </a>
 		<br/>
 		<br/>
-		<!-- <a href = "/board/search" id = "button"> Search! </a> -->
+		<a href = "/board/picList"> Search! </a>
 	</div>		
 </body>
 </html>
