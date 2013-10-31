@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -35,6 +36,10 @@ body {
 	margin: 0 auto;
 }
 
+#alertText {
+	font-size: 17px;
+}
+
 #textContents {
 	font-size: 17px;
 }
@@ -47,15 +52,28 @@ body {
 		</div>
 		<div id="blank2"></div>
 		<div id="textContents">내용 : ${board.contents}</div>
-		<br /> <img src="/images/${board.fileName}" style="width:100%" /> <br />
+		<br />
+		<c:choose>
+			<c:when test="${empty board.fileName}">
+				<div id="alertText">사진을 업로드 하지 않으셨습니다!</div>
+			</c:when>
+			<c:when test="${not empty board.fileName}">
+				<img src="/images/${board.fileName}" style="width: 100%" />
+				<br />
+			</c:when>
+		</c:choose>
+		<c:forEach items = "${board.comments}" var = "comment">
+			${comment.replys}
+			<hr/>			
+		</c:forEach>
 		<br />
 		<form action="/board/modifyThrow/${board.id}" method="post">
-			<input type = "submit" value="수정"/>
+			<input type="submit" value="수정" />
 		</form>
 		<form action="/board/delete/${board.id}" method="post">
 			<input type="submit" value="삭제" />
 		</form>
-		<a href = "/"> 처음 페이지로 가기 </a>
+		<br /> <a href="/" style="font-size: 20px"> 처음 페이지로 가기 </a>
 	</div>
 </body>
 </html>

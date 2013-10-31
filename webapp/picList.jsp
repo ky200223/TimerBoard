@@ -30,7 +30,9 @@ body {
 			<div id="textContents">
 				${board.title}<br /><br/>
 			</div>
+			<c:if test = "${not empty board.fileName}">
 			<img src="/images/${board.fileName}" style="width: 100%" />
+			</c:if>
 			<hr />
 		</c:forEach>
 	</div>
