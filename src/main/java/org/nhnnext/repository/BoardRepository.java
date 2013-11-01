@@ -7,5 +7,5 @@ import org.nhnnext.web.User;
 import org.springframework.data.repository.CrudRepository;
 
 public interface BoardRepository extends CrudRepository<Board, Long>{
-	List<Board> findByUser(User user);
+	public List<Board> findByUser(User user);
 }

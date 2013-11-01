@@ -10,7 +10,7 @@
 	var loginFeature = {
 		loginStatus : "${sessionScope.login_Status}",
 		userNickName : "${sessionScope.nickName}",
-		loginErrorMessage : "${sessionScope.errorMsg}",
+		loginErrorMessage : "${requestScope.errorMsg}",
 		login_Status_On : "1",
 		login_Status_Off : "0",
 		
@@ -23,9 +23,11 @@
 		
 		loginSectionDisplay : function() {
 			if (this.loginStatus === this.login_Status_Off)
-				document.getElementById("logInLogOut").innerHTML = '<a href = "/login/form"> 로그인하기 <br/></a>';
+				document.getElementById("logInLogOut").innerHTML = 
+				'<a href = "/login/form"> 로그인하기 </a> &nbsp <a href = "/login/register"> 회원가입하기 </a>';
 			else 
-				document.getElementById("logInLogOut").innerHTML = '<a href = "/login/logout"> 로그아웃하기 <br/></a>';
+				document.getElementById("logInLogOut").innerHTML = 
+				'<a href = "/login/logout"> 로그아웃하기 </a>';
 		},
 		
 		loginErrorMessageAlert : function() {
@@ -43,7 +45,6 @@
 	}
 	
 	window.onload = onloadEvent.onloadExecute;
-	
 </script>
 </head>
 <body>
@@ -68,6 +69,6 @@
 		<div class = "boardScollSection"></div>
 	</section>
 	<aside class = "otherUsers"></aside>
-	<script src = "/javascripts/potopotophoto.js"></script>
+<!-- 	<script src = "/javascripts/potopotophoto.js"></script> -->
 </body>
 </html>

@@ -40,7 +40,7 @@ public class LoginController {
 	public String signUp(User user, HttpSession session, MultipartFile file) {
 		if (userRepository.exists(user.getUserEmail())) {
 			session.setAttribute("errorMsg", signUp_AlreadyExistEmailError);
-			return "redirect:/";
+			return "Home_working";
 		} else {
 			FileUploader.upload(file);
 			user.setProfileName(file.getOriginalFilename());
@@ -58,7 +58,7 @@ public class LoginController {
 		if (!userRepository.exists(userEmail)) {
 			request.setAttribute("errorMsg", login_NoEmailExistError);
 			System.out.println("email_Err");
-			return "redirect:/";
+			return "Home_working";
 		}
 
 		User curUser = userRepository.findOne(userEmail);
@@ -75,7 +75,7 @@ public class LoginController {
 		else {
 			request.setAttribute("errorMsg", login_PasswordNotCorrectError);
 			System.out.println("password_Err");
-			return "redirect:/";
+			return "Home_working";
 		}
 	}
 
