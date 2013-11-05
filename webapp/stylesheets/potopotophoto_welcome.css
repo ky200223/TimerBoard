@@ -1,0 +1,72 @@
+/* reset align */
+body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textare a,button,select{margin:0;padding:0}
+body,input,textarea,select,button,table{font-family:'�뗭�',Dotum,AppleGothic,sans-serif;font-size:1em}
+img,fieldset{border:0}
+ul,ol{list-style:none}
+em,address{font-style:normal} a{text-decoration:none} a:hover,a:active,a:focus{text-decoration:underline}
+
+body {
+	font-family: 'Nanum Gothic' , sans-serif;
+	background-image: url('/images/pageSources/welcomePage_background.jpg');
+	background-size: inherit;
+}
+
+#welcome {
+	position : relative;
+	top : 190px;
+	width : 600px;
+	height: 400px;
+	margin : 0 auto;
+}
+
+#welcomeMessage {
+	width: 600px;
+	height: 200px;
+	text-align: center;
+	font-family: 'Lato','Nanum Gothic' , sans-serif;
+	font-weight: 100;
+	font-size: 70px;
+	color : #e5ecf3;	
+}
+
+#line1 {
+	margin: 0 0 0 30px;
+}
+
+#line2 {
+	display: block;
+	margin : 10px 0 0 0 ;
+	font-size: 30px;
+}
+
+#loginButton {
+	width: 110px;
+	height: 40px;
+	float: right;
+	line-height: 40px;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	margin: 0 150px 0 0;
+	z-index: 1;
+	border-radius: 2px;
+	background-color: #cbd0d5;
+	color: #59626d;
+	box-shadow: 1px 1px 3px #4e5762;
+}
+
+#registerButton {
+	width: 110px;
+	height: 40px;
+	float: left;
+	line-height: 40px;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	margin: 0 0 0 150px;
+	z-index: 1;
+	border-radius: 2px;
+	background-color: #cbd0d5;
+	color: #59626d;
+	box-shadow: 1px 1px 3px #4e5762;
+}

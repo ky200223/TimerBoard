@@ -32,4 +32,11 @@ public class CommentController {
 		
 		return "redirect:/" + userEmail;
 	}
+	
+	@RequestMapping(value = "/{commentId}/commentDelete", method = RequestMethod.POST) 
+	public String commentDelete(@PathVariable Long commentId, HttpSession session) {
+		String userEmail = (String)session.getAttribute("userEmail");
+		commentRepository.delete(commentId);		
+		return "redirect:/" + userEmail;
+	}
 }

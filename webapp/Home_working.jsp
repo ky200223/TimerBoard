@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>PotoPotoPhoto+</title>
 <link rel = "stylesheet" href = "/stylesheets/potopotophoto_main.css" type = "text/css" />
-<link href='http://fonts.googleapis.com/css?family=Lato:100,300,500' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Lato:100,300' rel='stylesheet' type='text/css'>
 <script type="text/javascript" language="javascript">
 	var loginFeature = {
 		loginStatus : "${sessionScope.login_Status}",
@@ -60,36 +60,77 @@
 			style = "background-image: url('/images/${user.profilePicName}');">
 				<!-- div style attribute contains img src -->
 			</div>
-			<div id = "blank1"></div>
 			<div id = "userNickNameSection">
 				${sessionScope.user.nickName}
 			</div>
 			<div id = "userInfo"></div>
 		</div>
 		<div class = "userBoard">
-			<div id = "boardRegisterSection"></div>
-			<div class = "boardScollSection">
-				<c:forEach items="${userBoards}" var="board">
-					<div class="textContents">
+			<c:forEach items="${userBoards}" var="board">
+				<div class = "eachBoardSection">
+					<div class="boardTitle">
 						${board.title}<br/><br/>
 					</div>
+					<form acction = "/board/delete/${board.id}" method="post">
+						<button class = "deleteButton" type = "submit">
+							삭제하기
+						</button>
+					</form>
+					<form action="/board/modifyThrow/${board.id}" method="post">
+						<button class = "modifyButton" type = "submit">
+							수정하기
+						</button>
+					</form>
+					<div class = "boardContents">
+						${board.contents}
+					</div>
 					<c:if test = "${not empty board.fileName}">
-						<img src="/images/${board.fileName}" style="width: 100%" />
+						<div class = "boardImage">
+							<img src="/images/${board.fileName}" style="width: 100%" />
+						</div>
 					</c:if>
 					<c:forEach items = "${board.comments}" var = "comment">
-						${comment.reply}
-						<hr/>	
+						<div class="commentSection">
+							<div class = "commentContents">
+								${comment.reply}
+							</div>
+							<form action = "/board/${comment.id}/deleteComment" method="post">
+							</form>
+						</div>	
+						<div class = "horizonLine">
+						</div>
 					</c:forEach>
-				<form action = "/board/${board.id}/comment" method = "post">
-					<input type = "text" name = "reply">
-					<input type = "submit" value = "댓글남기기">
-					</form>
-				<hr />
-				</c:forEach>
+					<div class  = "commentForm">
+						<form action = "/board/${board.id}/comment" method = "post">
+							<input class = "commentInputForm" type = "text" name = "reply" placeholder=" New comment..."/>
+							<button class = "commentButton" type = "submit">
+								댓글남기기
+							</button>
+						</form>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
+		<div class = "boardUploadSection">
+			<div id = "uploadMessage">
+				Upload
+			</div>
+			<div id = "uploadForm">
+				<form action="/board/upload" method="post" enctype="multipart/form-data">
+					<input class = "input_1" type= "text" name= "title" placeholder=" Title"/> </br></br>
+					<textarea class = "input_2" type = "text" name= "contents"/>asdfasdf
+					</textarea></br>
+					<input id = "fileUploadButton" type = "file" name = "file" accept="image/*"/>
+					<button type = "submit" id = "uploadButton">
+						저장하기
+					</button>
+				</form> 
 			</div>
 		</div>
-		<aside class = "boardRegisterForm"></aside>
 	</div>
+	<footer id = "footer"> 
+		2013 &nbsp; YoungKim &nbsp; @nhnnext.org <br>
+	</footer> 
 <!-- 	<script src = "/javascripts/potopotophoto.js"></script> -->
 </body>
 </html>

@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.nhnnext.repository.BoardRepository;
+import org.nhnnext.repository.CommentRepository;
 import org.nhnnext.repository.UserRepository;
 import org.nhnnext.support.FileUploader;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class BoardController {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private CommentRepository commentRepository;
 
 	public String loginRequired = "로그인이 필요합니다.";
 
@@ -29,24 +33,6 @@ public class BoardController {
 	public String form() {
 		return "form";
 	}
-
-	// @RequestMapping(value = "", method = RequestMethod.POST)
-	// public String create(String title, String imageContent) {
-	// System.out.println("title: " + title + " image: " + imageContent);
-	// return "redirect:/";
-	// }
-
-	// @RequestMapping(value = "", method = RequestMethod.POST)
-	// public String create(Board board) {
-	// System.out.println("Board : " + board);
-	// return "redirect:/";
-	// }
-
-	// @RequestMapping(value = "", method = RequestMethod.POST)
-	// public String create(Board board) {
-	// Board savedBoard = boardRepository.save(board);
-	// return "redirect:/board/" + savedBoard.getId();
-	// }
 
 	@RequestMapping("/{id}")
 	public String show(@PathVariable Long id, Model model) {
@@ -73,7 +59,7 @@ public class BoardController {
 			board.setUser(curUser);
 			// TODO FileUploader API를 활용해 업로드한 파일을 복사한다.
 			// TODO 첨부한 이미지 정보를 데이터베이스에 추가한다.
-			Board savedBoard = boardRepository.save(board);
+			boardRepository.save(board);
 			return "redirect:" + board.getId();
 		}
 	}
@@ -113,15 +99,10 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
-	public String delete(@PathVariable Long id) {
+	public String delete(@PathVariable Long id, HttpSession session) {
 		boardRepository.delete(id);
-		return "deleteMessage";
+		String userEmail = (String)session.getAttribute("userEmail");
+		System.out.println("=============delete============");
+		return "redirect:/" + userEmail;
 	}
-
-	@RequestMapping("/picList")
-	public String list(Model model) {
-		model.addAttribute("boards", boardRepository.findAll());
-		return "picList";
-	}
-
 }

@@ -53,7 +53,6 @@ public class LoginController {
 	@RequestMapping(value = "/signIn", method = RequestMethod.POST)
 	public String login(String userEmail, String password, HttpSession session, HttpServletRequest request) {
 		session.setAttribute("login_Status", login_Status_Off);
-		//String referer = request.getHeader("Referer");
 		
 		if (!userRepository.exists(userEmail)) {
 			request.setAttribute("errorMsg", login_NoEmailExistError);

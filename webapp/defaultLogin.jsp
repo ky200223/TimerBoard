@@ -10,8 +10,8 @@
 </head>
 <body>
 	<nav>
-		<div id = "gotoHome">
-			<a href = "/"> 홈화면으로 돌아가기 </a>
+		<div id = "gotoHome" onclick="location.href='/';">
+			홈화면으로
 		</div>
 	</nav>
 	<div id = "loginMessage">
@@ -19,15 +19,16 @@
 	</div>
 	<div id = "loginSection">
 		<div id = "loginForm">
-			<form id = "loginField" action = "/login/signIn" method = "post">
-				<input type = "text" name = "userEmail" placeholder="E-mail"/><br/><br/>
-				<input type = "password" name = "password" placeholder="password"/><br/></br>
+			<form action = "/login/signIn" method = "post">
+				<input class = "input" type = "text" name = "userEmail" placeholder=" ID"/><br/><br/>
+				<input class = "input" type = "password" name = "password" placeholder=" password"/><br/></br>
+				<button type = "submit" id = "loginButton">
+					로그인
+				</button>
 			</form>
-			<div id = "loginButton" onclick = "document.forms['loginField'].submit();">로그인</div>
-		</div>
 	</div>
 		<div id = "registerButton" onclick="location.href='/login/register';">
-			회원가입하기
+			가입하기
 		</div>
 </body>
 </html>

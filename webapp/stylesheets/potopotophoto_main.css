@@ -1,0 +1,286 @@
+/* reset align */
+body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textare a,button,select{margin:0;padding:0}
+body,input,textarea,select,button,table{font-family:'�뗭�',Dotum,AppleGothic,sans-serif;font-size:1em}
+img,fieldset{border:0}
+ul,ol{list-style:none}
+em,address{font-style:normal} a{text-decoration:none} a:hover,a:active,a:focus{text-decoration:underline}
+
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css); 
+
+body {
+	background-color: #dbd8d8;
+	font-family: 'Nanum Gothic' , sans-serif;
+	color : #eeeeee;
+}
+
+nav {
+	position : fixed;
+	top: 0;
+	width: 100%;
+	background-color: #59626d;
+	height: 40px;
+	box-shadow: 0px 1px 7px #4e5762;
+	z-index: 3;
+}
+
+#loginStatus {
+	float : left;
+	margin : 10px 10px 10px 20px;
+}
+
+#logInLogOut {
+	float : right;
+	margin : 11px;
+}
+
+.ContentsView {
+	width: 1220px;
+	height: auto;
+	margin: 0 auto;
+}
+
+.userProfileSection {
+	position : fixed;
+	top : 70px;
+	width : 220px;
+	height : 250px;
+	border : 1px solid #b6afaf;
+	border-radius: 6px;
+	background-color : #eeeeee;
+	box-shadow: 1px 1px 4px #d2d2d2;
+	float: left;
+}
+
+#userProfilePicSection {		
+	margin : 15px auto 0px auto;
+	display: block;
+    width: 160px;
+    height: 160px;
+    background-position: center center;
+    background-size: cover;
+	border : 12px solid #59626d;
+	border-radius: 2px;
+}
+
+#userNickNameSection {
+	margin: 13px auto 0px auto;
+	text-align: center;
+	color : #2b3541;
+	font-weight: 300;
+	font-size: 20px;
+	font-family: 'Nanum Gothic' , sans-serif; 
+}
+
+.userBoard {
+	margin: 80px 0 0 260px;
+	width : 700px;
+	height: auto;
+	float: left;
+}
+
+.eachBoardSection {
+	position: relative;
+	width: 700px;
+	height: auto;
+	margin: 0 0 40px 0;
+	border-radius: 8px;
+	border : 1px solid #b6afaf;
+	background-color : #f7f7f7;
+	box-shadow: 1px 1px 4px #d2d2d2;	
+}
+
+.boardTitle {
+	position : relative;
+	width: 400px;
+	height : 50px;
+	margin : 30px 0 0 30px;
+	float: left;
+	font-weight: 100;
+	font-size: 35px;
+	color : #59626d;
+}
+
+.deleteButton {
+	position: relative;
+	width : 70px;
+	height : 34px;
+	border-radius: 2px;
+	line-height: 38px;
+	text-align: center;
+	float: right;
+	margin: 36px 38px 0 10px;
+	background-color: #59626d;
+	color: #e5ecf3;
+	cursor : pointer;
+	font-size: 14px;
+	border: 0;
+}
+
+.modifyButton {
+	position: relative;
+	width : 70px;
+	height : 34px;
+	border-radius: 2px;
+	line-height: 38px;
+	text-align: center;
+	float: right;
+	margin: 36px 20px 0 20px;
+	background-color: #59626d;
+	color: #e5ecf3;
+	cursor : pointer;
+	font-size: 14px;
+	border: 0;
+}
+
+.boardContents {
+	position : relative;기
+	width: 620px;
+	margin : 100px 40px 30px 30px;
+	font-weight: 400;
+	font-size: 18px;
+	color : #59626d;
+		
+}
+
+.boardImage {
+	width : 630px;
+	margin : 0 0 20px 30px;
+	border : 5px solid #59626d;
+	border-radius: 2px;
+}
+
+.commentSection {
+	position : relative;
+	width: 640px;
+	height: auto;
+}
+
+.commentContents {
+	position : relative;
+	width: 580px;
+	height: auto;
+	margin : 14px 0 0px 30px;
+	color: #59626d;
+	padding : 0 0 14px 0;
+	1border-bottom: 1px dotted #c17c6e;
+}
+
+.horizonLine {
+	width: 638px;
+	height: 1px;
+	margin : 0 0 0 30px;
+	border-bottom: 1px dotted #c17c6e;
+}
+
+.commentForm {
+	position : relative;
+	width : 670px;
+	height: 40px;
+	margin : 20px 0 20px 30px;
+}
+
+.commentInputForm {
+	width : 530px;
+	height: 32px;
+	border: 1px solid #a5abb2;
+	border-radius: 2px;
+}
+
+.commentButton {
+	position: relative;
+	width : 90px;
+	height : 34px;
+	border-radius: 2px;
+	line-height: 38px;
+	text-align: center;
+	margin: 0px 10px 0 14px;
+	background-color: #59626d;
+	color: #e5ecf3;
+	cursor : pointer;
+	font-size: 14px;
+	border: 0;
+}
+
+.boardUploadSection {
+	position : fixed;
+	top : 70px;
+	width : 220px;
+	height: 360px;
+	margin: 0 0 0 1000px;
+	border : 1px solid #b6afaf;
+	border-radius: 6px;
+	background-color : #eeeeee;
+	box-shadow: 1px 1px 4px #d2d2d2;
+	float: right;
+}
+
+#uploadMessage {
+	width: 180px;
+	height: auto;
+	text-align: center;
+	margin : 16px auto 0 auto;
+	font-size: 34px;
+	font-weight: 100;
+	font-family: 'Lato', 'Nanum Gothic', sans-serif;
+	color: #59626d;
+	padding-bottom: 16px;
+	border-bottom: 2px dotted #d3a4a4;
+}
+
+#uploadForm {
+	width: 180px;
+	height: auto;
+	margin: 30px auto 0 auto;
+	text-align: center;
+}
+
+.input_1 {
+	width: 160px;
+	height: 24px;
+	border: 1px solid #a5abb2;
+	margin: 0 auto 0 auto;
+	border-radius: 2px;
+}
+
+.input_2 {
+	width: 160px;
+	height: 70px;
+	border: 1px solid #a5abb2;
+	border-radius: 2px;
+	margin: 0 auto 20px auto;
+	resize: none;
+	color: #aaaaaa;
+}
+
+#fileUploadButton {
+	width : 160px;
+	height: auto;
+}
+
+
+#uploadButton {
+	position : relative;
+	width : 80px;
+	height : 38px;
+	border-radius: 2px;
+	line-height: 40px;
+	text-align: center;
+	margin: 30px auto 0px auto;
+	background-color: #59626d;
+	color: #e5ecf3;
+	cursor : pointer;
+	font-size: 14px;
+	border: 0;
+}
+
+footer {
+	width: 600px;
+	height: 40px;
+	text-align: center;
+	margin: -10px auto 20px auto;
+	font-family: 'Lato', 'Nanum Gothic' , sans-serif;
+	font-weight: 300;
+	font-size: 18px;
+	color: #59626d;
+	display: block;
+}

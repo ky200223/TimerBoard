@@ -4,17 +4,34 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Register Page</title>
+<link rel = "stylesheet" href = "/stylesheets/potopotophoto_register.css" type = "text/css" />
+<link href='http://fonts.googleapis.com/css?family=Lato:100,300' rel='stylesheet' type='text/css'>
 </head>
 <body>
-<h1>회원가입페이지</h1>
-<form action = "/login/signUp" method = "post" enctype="multipart/form-data">
-	아이디 : <input type = "text" name = "userEmail"/><br/><br/>
-	비밀번호 : <input type = "password" name = "password"/><br/><br/>
-	별명 : <input type = "text" name = "nickName"/><br/><br/>
-	프로필 사진 : <input type="file" name="file" size="50" accept="image/*" />
-	<input type = "submit" value = "회원가입"/>
-	<input type = "reset" value = "되돌리기"/>
-	</form>
+	<nav>
+		<div id = "gotoHome" onclick="location.href='/';">
+			홈화면으로
+		</div>
+	</nav>
+	<div id = "registerSection">
+		<div id = "registerMessage">
+			Register
+		</div>
+		<div id = "registerForm">
+			<form action = "/login/signUp" method="post" enctype="multipart/form-data">
+				User ID &nbsp : &nbsp <input class = "input" type = "text" name = "userEmail" placeholder=" ID"/> </br>
+				<div class = "blank"></div>
+				User Nickname &nbsp : &nbsp <input class = "input" type = "text" name = "nickName" placeholder=" Nickname"/> </br>
+				<div class = "blank"></div>
+				Password &nbsp : &nbsp <input class = "input" type = "password" name = "password" placeholder="  password"/> </br> 
+				<div class = "blank"></div>
+				ProfilePic &nbsp : &nbsp <input id = "fileUploadButton" type = "file" name = "file" accept="image/*"/> </br>
+				<button type = "submit" id = "registerButton">
+					가입하기
+				</button>
+			</form>
+		</div>
+	</div>
 </body>
 </html>

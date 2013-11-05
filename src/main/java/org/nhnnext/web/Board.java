@@ -1,8 +1,8 @@
 package org.nhnnext.web;
 
-import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,7 +27,7 @@ public class Board {
 	@Column(length = 1000, nullable = false)
 	private String fileName;
 	
-	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER, cascade={CascadeType.REMOVE})
 	private List<Comment> comments;
 	
 	@ManyToOne

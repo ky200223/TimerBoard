@@ -4,15 +4,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>potopotophoto</title>
+<title>PotoPotoPhoto+</title>
+<link rel = "stylesheet" href = "/stylesheets/potopotophoto_welcome.css" type = "text/css" />
+<link href='http://fonts.googleapis.com/css?family=Lato:100,300,500' rel='stylesheet' type='text/css'>
 </head>
 <body>
 	<div id = "welcome">
 		<div id = "welcomeMessage">
+			<span id = "line1">PotoPotoPhoto+ </span> </br>
+			<span id = "line2">share some glees</span>		
 		</div>
-		<div id = "loginButton">
+		<div id = "loginButton" onclick="location.href='/login/form';">
+			로그인하기
 		</div>
-		<div id = "registerButton">
+		<div id = "registerButton" onclick="location.href='/login/register';">
+			가입하기
 		</div>
 	</div>
 </body>
