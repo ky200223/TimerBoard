@@ -47,7 +47,7 @@
 		사진을 올려보장 <br>
 		<hr style="width: 400px">
 		<div id="blank2"></div>
-		<form action="/board/register" method="post" enctype="multipart/form-data">
+		<form action="/board/upload" method="post" enctype="multipart/form-data">
 			<div id = "content">
 				이 사진은 제목이 뭘까? &nbsp;: &nbsp;
 				<input type="text" name="title" style="width: 100px"/>

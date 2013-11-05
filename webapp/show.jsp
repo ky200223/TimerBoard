@@ -63,9 +63,13 @@ body {
 			</c:when>
 		</c:choose>
 		<c:forEach items = "${board.comments}" var = "comment">
-			${comment.replys}
-			<hr/>			
+			${comment.reply}
+			<hr/>		
 		</c:forEach>
+		<form action = "/board/${board.id}/comment" method = "post">
+			<input type = "text" name = "reply">
+			<input type = "submit" value = "댓글남기기">
+		</form>
 		<br />
 		<form action="/board/modifyThrow/${board.id}" method="post">
 			<input type="submit" value="수정" />
@@ -73,7 +77,7 @@ body {
 		<form action="/board/delete/${board.id}" method="post">
 			<input type="submit" value="삭제" />
 		</form>
-		<br /> <a href="/" style="font-size: 20px"> 처음 페이지로 가기 </a>
+		<br /> <a href="/${sessionScope.user.userEmail}" style="font-size: 20px"> 처음 페이지로 가기 </a>
 	</div>
 </body>
 </html>

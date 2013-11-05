@@ -27,7 +27,28 @@ public class Comment {
 		this.reply = reply;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getReply() {
+		return reply;
+	}
+
+	public void setReply(String reply) {
+		this.reply = reply;
+	}
+
 	public Board getBoard() {
 		return board;
 	}
+
+	public void setBoard(Board board) {
+		this.board = board;
+	}
+
 }

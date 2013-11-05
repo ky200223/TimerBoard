@@ -7,7 +7,6 @@ import org.nhnnext.repository.UserRepository;
 import org.nhnnext.support.FileUploader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -37,15 +36,16 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/signUp", method = RequestMethod.POST)
-	public String signUp(User user, HttpSession session, MultipartFile file) {
+	public String signUp(User user, HttpSession session, HttpServletRequest request, MultipartFile file) {
 		if (userRepository.exists(user.getUserEmail())) {
-			session.setAttribute("errorMsg", signUp_AlreadyExistEmailError);
+			request.setAttribute("errorMsg", signUp_AlreadyExistEmailError);
+			System.out.println("email_exist_err");
 			return "Home_working";
 		} else {
 			FileUploader.upload(file);
-			user.setProfileName(file.getOriginalFilename());
+			user.setProfilePicName(file.getOriginalFilename());
 			User registerUser = userRepository.save(user);
-			session.setAttribute("errorMsg", signUp_Complete);
+			//request.setAttribute("errorMsg", signUp_Complete);
 			return "redirect:/" + registerUser.getUserEmail();
 		}
 	}
@@ -65,10 +65,12 @@ public class LoginController {
 		String correctPassword = curUser.getPassword();
 
 		if (correctPassword.equals(password)) {
+			// Remember session's attributes
+			session.setAttribute("userEmail", curUser.getUserEmail());
 			session.setAttribute("nickName", curUser.getNickName());
 			session.setAttribute("login_Status", login_Status_On);
 			session.setAttribute("user", curUser);
-			System.out.println("Success");
+			System.out.println("-----------------------LOGIN_SUCCESS----------------------------------");
 			return "redirect:/" + curUser.getUserEmail();
 		}
 
@@ -81,8 +83,9 @@ public class LoginController {
 
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
-		session.removeAttribute("nickName");
 		session.removeAttribute("user");
+		session.removeAttribute("nickName");
+		session.removeAttribute("login_Status");
 		session.setAttribute("login_Status", login_Status_Off);
 		return "redirect:/";
 	}

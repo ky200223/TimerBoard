@@ -1,5 +1,6 @@
 package org.nhnnext.web;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -38,13 +39,13 @@ public class Board {
 	public Board(User user) {
 		this.user = user;
 	}
-	
-	public User getUser() {
-		return user;
+
+	public Long getId() {
+		return id;
 	}
-	
-	public void setUser(User user) {
-		this.user = user;
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getTitle() {
@@ -71,17 +72,19 @@ public class Board {
 		this.fileName = fileName;
 	}
 
-	@Override
-	public String toString() {
-		return "Board [title=" + title + ", contents" + contents + ", fileName"
-				+ fileName + "]";
-	}
-
-	public Long getId() {
-		return id;
-	}
-
 	public List<Comment> getComments() {
 		return comments;
 	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}	
 }

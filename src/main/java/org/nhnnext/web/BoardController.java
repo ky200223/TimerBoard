@@ -1,5 +1,6 @@
 package org.nhnnext.web;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.nhnnext.repository.BoardRepository;
@@ -18,9 +19,11 @@ import org.springframework.web.multipart.MultipartFile;
 public class BoardController {
 	@Autowired
 	private BoardRepository boardRepository;
-	
+
 	@Autowired
 	private UserRepository userRepository;
+
+	public String loginRequired = "로그인이 필요합니다.";
 
 	@RequestMapping("/form")
 	public String form() {
@@ -54,18 +57,25 @@ public class BoardController {
 		// TODO 조회한 Board 데이터를 Model에 저장해야 한다. return "show";
 	}
 
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String create(Board board, MultipartFile file, HttpSession session) {
-		FileUploader.upload(file);
-		String userEmail = (String) session.getAttribute("userEmail");
-		// 나중에 로그인 하지 않았을 때는 접근 못하게끔 수정하는 것이 필요 (현 상태에선 아예 글쓰기 버튼이 없긴 함 그래도 확인 필)
-		User user = userRepository.findOne(userEmail);
-		board.setUser(user);
-		board.setFileName(file.getOriginalFilename());
-		// TODO FileUploader API를 활용해 업로드한 파일을 복사한다.
-		// TODO 첨부한 이미지 정보를 데이터베이스에 추가한다.
-		Board savedBoard = boardRepository.save(board);
-		return "redirect:/board/" + savedBoard.getId();
+	@RequestMapping(value = "/upload", method = RequestMethod.POST)
+	public String create(Board board, MultipartFile file, HttpSession session,
+			HttpServletRequest request) {
+		if (session.getAttribute("login_Status") == "0") {
+			request.setAttribute("errorMsg", loginRequired);
+			return "defaultLogin";
+		} else {
+			if (!file.isEmpty()) {
+				FileUploader.upload(file);
+				board.setFileName(file.getOriginalFilename());
+			}
+			String userEmail = (String) session.getAttribute("userEmail");
+			User curUser = userRepository.findOne(userEmail);
+			board.setUser(curUser);
+			// TODO FileUploader API를 활용해 업로드한 파일을 복사한다.
+			// TODO 첨부한 이미지 정보를 데이터베이스에 추가한다.
+			Board savedBoard = boardRepository.save(board);
+			return "redirect:" + board.getId();
+		}
 	}
 
 	// @RequestMapping(value = "/search", method = RequestMethod.POST)
@@ -113,4 +123,5 @@ public class BoardController {
 		model.addAttribute("boards", boardRepository.findAll());
 		return "picList";
 	}
+
 }

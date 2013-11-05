@@ -17,22 +17,25 @@ public class User {
 	private String nickName;
 	
 	@Column(length = 1000, nullable = false)
-	private String profileName;
+	private String profilePicName;
 	
+	public String getProfilePicName() {
+		return profilePicName;
+	}
+	
+//	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER)
+//    private List<Board> boards;
+
+	public void setProfilePicName(String profilePicName) {
+		this.profilePicName = profilePicName;
+	}
+
 	public String getUserEmail() {
 		return userEmail;
 	}
 	
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
-	}
-	
-	public String getProfileName() {
-		return profileName;
-	}
-
-	public void setProfileName(String profileName) {
-		this.profileName = profileName;
 	}
 	
 	public String getPassword() {
