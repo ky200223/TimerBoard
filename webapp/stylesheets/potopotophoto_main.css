@@ -1,6 +1,6 @@
 /* reset align */
 body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textare a,button,select{margin:0;padding:0}
-body,input,textarea,select,button,table{font-family:'�뗭�',Dotum,AppleGothic,sans-serif;font-size:1em}
+body,input,textarea,select,button,table{font-family: NanumGothic,Dotum,AppleGothic,sans-serif;font-size:1em}
 img,fieldset{border:0}
 ul,ol{list-style:none}
 em,address{font-style:normal} a{text-decoration:none} a:hover,a:active,a:focus{text-decoration:underline}
@@ -30,7 +30,16 @@ nav {
 
 #logInLogOut {
 	float : right;
-	margin : 11px;
+	width: 120px;
+	height : 40px;
+	margin : 0 0 0 0;
+	text-align: center;
+	line-height: 40px;
+	vertical-align: middle;
+	border-left: 1px solid #dad7f4;
+	background-color: #616a76;
+	color : #eeeeee;
+	cursor: pointer;
 }
 
 .ContentsView {
@@ -108,7 +117,7 @@ nav {
 	line-height: 38px;
 	text-align: center;
 	float: right;
-	margin: 36px 38px 0 10px;
+	margin: 32px 38px 0 10px;
 	background-color: #59626d;
 	color: #e5ecf3;
 	cursor : pointer;
@@ -124,7 +133,7 @@ nav {
 	line-height: 38px;
 	text-align: center;
 	float: right;
-	margin: 36px 20px 0 20px;
+	margin: 32px 20px 0 20px;
 	background-color: #59626d;
 	color: #e5ecf3;
 	cursor : pointer;
@@ -143,26 +152,80 @@ nav {
 }
 
 .boardImage {
+	position: relative;
 	width : 630px;
+	height: auto;
 	margin : 0 0 20px 30px;
 	border : 5px solid #59626d;
 	border-radius: 2px;
 }
 
-.commentSection {
-	position : relative;
-	width: 640px;
+
+
+.activeCommentSection {
+	width: 636px;
+	height: 22px;
+	margin : -6px 0 0 32px;
+}
+
+.commentCount {
+	width : 200px;
 	height: auto;
+	color : #59626d;
+	font-size: 15px;
+	float: left;
+}
+
+.commentToggle {
+	width: 20px;
+	height: 20px;
+	background-image: url('/images/pageSources/commentButton.png');
+	background-size: cover;
+	float: right;
+	cursor : pointer;
+}
+
+.commentField {
+	position : relative;
+	width: 680px;
+	height: auto;
+}
+
+.commentSection {
+	display: block;
 }
 
 .commentContents {
 	position : relative;
-	width: 580px;
+	width: 550px;
 	height: auto;
-	margin : 14px 0 0px 30px;
+	margin : 14px 0 0 30px;
 	color: #59626d;
 	padding : 0 0 14px 0;
-	1border-bottom: 1px dotted #c17c6e;
+	float : left;
+}
+
+.commentDeleteForm {
+	position: relative;
+	width: 50px;
+	height: auto;
+	margin : 0px 0px 0px 590px;
+	padding : 14px 0 14px 0;
+}
+
+.commentDeleteButton {
+	position: relative;
+	width : 36px;
+	height : 20px;
+	border-radius: 2px;
+	line-height: 22px;
+	text-align: center;
+	margin: 0px 10px 0 14px;
+	background-color: #59626d;
+	color: #e5ecf3;
+	cursor : pointer;
+	font-size: 10px;
+	border: 0;
 }
 
 .horizonLine {
@@ -191,7 +254,7 @@ nav {
 	width : 90px;
 	height : 34px;
 	border-radius: 2px;
-	line-height: 38px;
+	line-height: 34px;
 	text-align: center;
 	margin: 0px 10px 0 14px;
 	background-color: #59626d;
@@ -209,7 +272,7 @@ nav {
 	margin: 0 0 0 1000px;
 	border : 1px solid #b6afaf;
 	border-radius: 6px;
-	background-color : #eeeeee;
+	background-color : #f7f7f7;
 	box-shadow: 1px 1px 4px #d2d2d2;
 	float: right;
 }
@@ -240,21 +303,25 @@ nav {
 	border: 1px solid #a5abb2;
 	margin: 0 auto 0 auto;
 	border-radius: 2px;
+	font-size: 15px;
 }
 
-.input_2 {
+#defaultBoardContents {
 	width: 160px;
 	height: 70px;
 	border: 1px solid #a5abb2;
 	border-radius: 2px;
 	margin: 0 auto 20px auto;
+	padding: 1;
 	resize: none;
 	color: #aaaaaa;
+	font-size: 14px;
 }
 
 #fileUploadButton {
 	width : 160px;
 	height: auto;
+	color: #59626d;
 }
 
 
@@ -265,7 +332,7 @@ nav {
 	border-radius: 2px;
 	line-height: 40px;
 	text-align: center;
-	margin: 30px auto 0px auto;
+	margin: 20px auto 0px auto;
 	background-color: #59626d;
 	color: #e5ecf3;
 	cursor : pointer;

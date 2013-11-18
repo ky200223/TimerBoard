@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 public class Board {
 	@Id
@@ -26,7 +28,8 @@ public class Board {
 
 	@Column(length = 1000, nullable = false)
 	private String fileName;
-	
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER, cascade={CascadeType.REMOVE})
 	private List<Comment> comments;
 	

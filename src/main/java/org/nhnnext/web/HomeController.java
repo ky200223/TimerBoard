@@ -1,5 +1,6 @@
 package org.nhnnext.web;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -10,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Collections;
 
 @Controller
 public class HomeController {
@@ -33,7 +32,7 @@ public class HomeController {
 			session.setAttribute("login_Status", login_Status_Off);
 			return "welcome";
 		}
-		return "Home_working";
+		return "potopotophoto_main";
 	}
 	
 	@RequestMapping("/{userEmail}")
@@ -43,8 +42,12 @@ public class HomeController {
 			return "welcome";
 		}
 		User curUser = userRepository.findOne(userEmail);
-		session.setAttribute("userBoards", boardRepository.findByUser(curUser));
-		return "Home_working";
+		// reverse list to show boards descending order
+		List<Board> boardList = boardRepository.findByUser(curUser);
+		Collections.reverse(boardList);
+		
+		session.setAttribute("userBoards", boardList);
+		return "potopotophoto_main";
 	}
 }
 

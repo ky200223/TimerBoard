@@ -14,10 +14,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Controller
 @RequestMapping("/board")
 public class BoardController {
+	private static final Logger log = LoggerFactory.getLogger(BoardController.class);
+	
 	@Autowired
 	private BoardRepository boardRepository;
 
@@ -39,13 +43,12 @@ public class BoardController {
 		Board board = boardRepository.findOne(id);
 		model.addAttribute("board", board);
 		return "show";
-		// TODO DB에서 id에 해당하는 Board 데이터를 조회해야 한다.
-		// TODO 조회한 Board 데이터를 Model에 저장해야 한다. return "show";
 	}
 
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	public String create(Board board, MultipartFile file, HttpSession session,
 			HttpServletRequest request) {
+		log.debug("board : {}", board);
 		if (session.getAttribute("login_Status") == "0") {
 			request.setAttribute("errorMsg", loginRequired);
 			return "defaultLogin";
@@ -57,22 +60,10 @@ public class BoardController {
 			String userEmail = (String) session.getAttribute("userEmail");
 			User curUser = userRepository.findOne(userEmail);
 			board.setUser(curUser);
-			// TODO FileUploader API를 활용해 업로드한 파일을 복사한다.
-			// TODO 첨부한 이미지 정보를 데이터베이스에 추가한다.
 			boardRepository.save(board);
-			return "redirect:" + board.getId();
+			return "redirect:/" + userEmail;
 		}
 	}
-
-	// @RequestMapping(value = "/search", method = RequestMethod.POST)
-	// public String search(@PathVariable Long id, Model model, String title) {
-	// id = (long) 1;
-	// while(boardRepository.findOne(id).getFileName() != title) {
-	// id ++;
-	// }
-	//
-	// return result;
-	// }
 
 	@RequestMapping(value = "/modifyThrow/{id}", method = RequestMethod.POST)
 	public String modifyThrow(@PathVariable Long id, Model model) {
@@ -102,7 +93,6 @@ public class BoardController {
 	public String delete(@PathVariable Long id, HttpSession session) {
 		boardRepository.delete(id);
 		String userEmail = (String)session.getAttribute("userEmail");
-		System.out.println("=============delete============");
 		return "redirect:/" + userEmail;
 	}
 }

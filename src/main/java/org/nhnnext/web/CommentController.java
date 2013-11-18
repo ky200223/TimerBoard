@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/board")
@@ -38,5 +39,12 @@ public class CommentController {
 		String userEmail = (String)session.getAttribute("userEmail");
 		commentRepository.delete(commentId);		
 		return "redirect:/" + userEmail;
+	}
+	
+	@RequestMapping(value="/{id}/comments.json", method=RequestMethod.POST)
+	public @ResponseBody Comment createAndShow(@PathVariable Long id, String reply) {
+	Board board = boardRepository.findOne(id);
+	Comment comment = new Comment(board, reply); 
+	return commentRepository.save(comment);
 	}
 }

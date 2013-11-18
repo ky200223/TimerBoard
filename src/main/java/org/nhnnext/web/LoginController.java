@@ -40,13 +40,13 @@ public class LoginController {
 		if (userRepository.exists(user.getUserEmail())) {
 			request.setAttribute("errorMsg", signUp_AlreadyExistEmailError);
 			System.out.println("email_exist_err");
-			return "Home_working";
+			return "potopotophoto_main";
 		} else {
 			FileUploader.upload(file);
 			user.setProfilePicName(file.getOriginalFilename());
-			User registerUser = userRepository.save(user);
+			userRepository.save(user);
 			//request.setAttribute("errorMsg", signUp_Complete);
-			return "redirect:/" + registerUser.getUserEmail();
+			return "redirect:/";
 		}
 	}
 
@@ -57,7 +57,7 @@ public class LoginController {
 		if (!userRepository.exists(userEmail)) {
 			request.setAttribute("errorMsg", login_NoEmailExistError);
 			System.out.println("email_Err");
-			return "Home_working";
+			return "potopotophoto_main";
 		}
 
 		User curUser = userRepository.findOne(userEmail);
@@ -76,7 +76,7 @@ public class LoginController {
 		else {
 			request.setAttribute("errorMsg", login_PasswordNotCorrectError);
 			System.out.println("password_Err");
-			return "Home_working";
+			return "potopotophoto_main";
 		}
 	}
 
