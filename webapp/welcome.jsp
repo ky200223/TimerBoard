@@ -7,6 +7,15 @@
 <title>PotoPotoPhoto+</title>
 <link rel = "stylesheet" href = "/stylesheets/potopotophoto_welcome.css" type = "text/css" />
 <link href='http://fonts.googleapis.com/css?family=Lato:100,300,500' rel='stylesheet' type='text/css'>
+<script>
+	var global_vars = {
+		loginStatus : "${sessionScope.login_Status}",
+		userNickName : "${sessionScope.nickName}",
+		loginMessage : "${sessionScope.errorMsg}",
+		login_Status_On : "1",
+		login_Status_Off : "0"
+	}
+</script>
 </head>
 <body>
 	<div id = "welcome">
@@ -22,4 +31,5 @@
 		</div>
 	</div>
 </body>
+<script src = "/javascripts/potopotophoto_welcome.js"></script>
 </html>

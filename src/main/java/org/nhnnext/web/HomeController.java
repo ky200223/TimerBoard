@@ -23,7 +23,8 @@ public class HomeController {
 	public String login_Status_Off = "0";	
 	
 	@RequestMapping("/")
-	public String welcome(HttpSession session) {	
+	public String welcome(HttpSession session) {
+		session.removeAttribute("errorMsg");
 		if (session.getAttribute("login_Status") == null) {
 			session.setAttribute("login_Status", login_Status_Off);
 			return "welcome";
@@ -36,7 +37,8 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/{userEmail}")
-	public String loginUserHome(@PathVariable String userEmail, HttpSession session) {	
+	public String loginUserHome(@PathVariable String userEmail, HttpSession session) {
+		session.removeAttribute("errorMsg");
 		if (session.getAttribute("login_Status") == null) {
 			session.setAttribute("login_Status", login_Status_Off);
 			return "welcome";

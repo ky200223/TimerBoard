@@ -38,14 +38,16 @@ public class LoginController {
 	@RequestMapping(value = "/signUp", method = RequestMethod.POST)
 	public String signUp(User user, HttpSession session, HttpServletRequest request, MultipartFile file) {
 		if (userRepository.exists(user.getUserEmail())) {
-			request.setAttribute("errorMsg", signUp_AlreadyExistEmailError);
-			System.out.println("email_exist_err");
-			return "potopotophoto_main";
+			session.removeAttribute("errorMsg");
+			session.setAttribute("errorMsg", signUp_AlreadyExistEmailError);
+			//System.out.println("email_exist_err");
+			return "welcome";
 		} else {
 			FileUploader.upload(file);
 			user.setProfilePicName(file.getOriginalFilename());
 			userRepository.save(user);
 			//request.setAttribute("errorMsg", signUp_Complete);
+			session.removeAttribute("errorMsg");
 			return "redirect:/";
 		}
 	}
@@ -55,9 +57,9 @@ public class LoginController {
 		session.setAttribute("login_Status", login_Status_Off);
 		
 		if (!userRepository.exists(userEmail)) {
-			request.setAttribute("errorMsg", login_NoEmailExistError);
-			System.out.println("email_Err");
-			return "potopotophoto_main";
+			session.removeAttribute("errorMsg");
+			session.setAttribute("errorMsg", login_NoEmailExistError);
+			return "welcome";
 		}
 
 		User curUser = userRepository.findOne(userEmail);
@@ -65,6 +67,7 @@ public class LoginController {
 
 		if (correctPassword.equals(password)) {
 			// Remember session's attributes
+			session.removeAttribute("errorMsg");
 			session.setAttribute("userEmail", curUser.getUserEmail());
 			session.setAttribute("nickName", curUser.getNickName());
 			session.setAttribute("login_Status", login_Status_On);
@@ -74,9 +77,9 @@ public class LoginController {
 		}
 
 		else {
-			request.setAttribute("errorMsg", login_PasswordNotCorrectError);
-			System.out.println("password_Err");
-			return "potopotophoto_main";
+			session.removeAttribute("errorMsg");
+			session.setAttribute("errorMsg", login_PasswordNotCorrectError);
+			return "welcome";
 		}
 	}
 

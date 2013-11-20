@@ -10,7 +10,7 @@ var loginFeature = {
 			if (global_vars.loginErrorMessage)
 				alert(global_vars.loginErrorMessage);
 		}
-	};
+};
 	
 var onloadEvent = {	
 	onloadExecute : function() {
@@ -57,7 +57,7 @@ var boardFeature = {
 		commentSection.style.display = "block";
 		commentToggle.removeEventListener('click', boardFeature.commentOn, false);
 		commentToggle.addEventListener('click', boardFeature.commentOff, false);
-	}, 
+	},
 	
 	writeComment : function(e) {
 		e.preventDefault();
@@ -73,7 +73,7 @@ var boardFeature = {
 			if (request.readyState == 4 && request.status == 200) {
 				var obj = JSON.parse(request.responseText);
 				var eleCommentList = eleForm.parentElement.previousElementSibling;
-				eleCommentList.insertAdjacentHTML("afterend", "<div class=\"commentField\">" + "<div class = \"commentContents\">" + obj.reply + "</div>" + "<form action = \"/board/${comment.id}/deleteComment\" method=\"post\">" + "</form>" + "</div>" + "<div class = \"horizonLine\">" + "</div>");
+				eleCommentList.insertAdjacentHTML("afterend", "<div class=\"commentField\">" + "<div class = \"commentContents\">" + obj.reply + "</div>" + +"<div class = \"commentDeleteForm\">" + "<form action = \"/board/${comment.id}/deleteComment\" method=\"post\">" + "<button class = \"commentDeleteButton\" type = \"submit\">" + "삭제" + "</button>" + "</form>" + "</div>" + "</div>" + "<div class = \"horizonLine\">" + "</div>");
 			};
 		};
 		request.send(oFormData);
